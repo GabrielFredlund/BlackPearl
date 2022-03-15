@@ -9,40 +9,22 @@ using BlackPearl;
 
 int totalNecklaceCount = 1000;
 var r = new Random();
-List<PearlList> necklaces = new List<PearlList>();
+var db = new BlackPearl.BlackPearl();
 
+db.PearlLists.RemoveRange(db.PearlLists);
+db.Pearls.RemoveRange(db.Pearls);
 
-
-necklaces = db.Necklaces;
-
-if (necklaces.Count() == 0)
-{
-    // Skapa slump här och inserta
-    // Eller töm db och slumpa nya
-}
-
-
-// Skapa testhalsband
 for (int i = 0; i < totalNecklaceCount; i++)
 {
-    // Slumpa mellan 10 och 50 pärlor per halsband
     var necklace = PearlList.Factory.CreateRandomList(r.Next(10, 50));
-    necklaces.Add(necklace);
+    db.PearlLists.Add(necklace);
+    db.Pearls.AddRange(necklace._pearllist);
 }
 
-Console.WriteLine($"Skapade {totalNecklaceCount} halsband.");
+db.SaveChanges();
 
-// Räkna pärlor
-int totalPearls = 0;
-
-foreach(var n in necklaces)
-{
-    totalPearls += n.Count();
-}
-
-Console.WriteLine($"Totalt slumpades {totalPearls} pärlor.");
 
 // Hitta dyraste
-var mostExpensive = necklaces.OrderByDescending(price => price.totalPrice).First();
+//var mostExpensive = dbNecklaces.OrderByDescending(price => price.totalPrice).First();
 
-Console.WriteLine($"Halsband {necklaces.IndexOf(mostExpensive)} är dyrast med ett pris på {mostExpensive.totalPrice} SEK.");
+//Console.WriteLine($"Dyraste: {mostExpensive.totalPrice} SEK.");

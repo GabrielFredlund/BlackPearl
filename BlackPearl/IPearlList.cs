@@ -9,7 +9,7 @@ namespace BlackPearl
     public interface IPearlList
     {
         [Key]
-        public Guid NecklaceID { get; set; }
+        public int NecklaceID { get; set; }
         public int Count();
         public int totalPrice { get;}
         public void Sort();

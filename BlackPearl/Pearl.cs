@@ -10,7 +10,8 @@ namespace BlackPearl
     public class Pearl : IPearl
     {
         [Key]
-        public Guid NecklaceID { get; set; } 
+        public int Id { get; set; }
+        public int NecklaceID { get; set; } 
         public const int basePrice = 50;
         public int Diameter { get; set; }
         public string Color { get; set; } // kan vara Enum om man vill
@@ -108,11 +109,12 @@ namespace BlackPearl
         // Factory
         public static class Factory
         {
-            public static Pearl CreateRandomPearl(Guid NecklaceID)
+            public static Pearl CreateRandomPearl(int NecklaceID)
             {
                 
                 var p = new Pearl();
                 p.RandomInit();
+                p.NecklaceID = NecklaceID;
                 return p;
             }
         }

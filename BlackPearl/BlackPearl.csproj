@@ -27,8 +27,4 @@
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

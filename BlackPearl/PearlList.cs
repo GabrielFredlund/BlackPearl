@@ -10,9 +10,8 @@ namespace BlackPearl
     public class PearlList : IPearlList
     {
         [Key]
-        public Guid NecklaceID { get; set; } 
-        // Listan
-        List<Pearl> _pearllist = new List<Pearl>();
+        public int NecklaceID { get; set; } 
+        public List<Pearl> _pearllist = new List<Pearl>();
         
         // Här räknas totala priset för hela halsbandet ut
         public int totalPrice
@@ -84,8 +83,9 @@ namespace BlackPearl
 
             public static PearlList CreateRandomList(int NrOfPearls)
             {
+                var r = new Random();
                 var pearlList = new PearlList();
-                pearlList.NecklaceID = Guid.NewGuid();
+                pearlList.NecklaceID = r.Next(1000000000);
                 for (int i = 0; i < NrOfPearls; i++)
                 {
                     

@@ -8,7 +8,7 @@ namespace BlackPearl
 {
     public interface IPearl : IEquatable<IPearl>, IComparable<IPearl>
     {
-        public Guid NecklaceID { get; set; }
+        public int NecklaceID { get; set; }
         public int Diameter { get; set; }
         public string Color { get; set; }
         public string Shape { get; set; }
